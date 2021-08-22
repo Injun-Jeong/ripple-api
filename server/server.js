@@ -1,12 +1,12 @@
 'use strict';
 
 const express = require('express');
-const wallet = require('./api/wallet');
+const wallets = require('./api/wallets');
 const app = express();
 const port = 7777
 
 app.use(express.json())
-app.use('/wallet', wallet)
+app.use('/wallets', wallets)
 
 app.get('/', (req, res) => {
     return res.send('listening...');

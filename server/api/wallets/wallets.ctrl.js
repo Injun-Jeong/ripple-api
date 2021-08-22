@@ -9,12 +9,12 @@ ripple.connect();
 
 
 /**
- * 이름: index
+ * 이름: getWallet
  * 설명: 계좌 정보 조회
  * */
-const index = function(req, res) {
+const getWallet = function(req, res) {
     console.log('리플 계좌 정보 조회 API 시작..');
-    const account = req.query.account;
+    const account = req.params.account;
 
     ripple.getAccountInfo(account).then(info => {
         console.log('\n============계좌정보');
@@ -38,10 +38,10 @@ const index = function(req, res) {
  * */
 const transfer = function(req, res) {
     /* 필수 입력값 체크 todo: 필수 입력값 체크 로직 */
-    const account = req.query.account;
-    const secret = req.query.secret;
-    const destination = req.query.destination;
-    const amount = req.query.amount;
+    const account = req.body.account;
+    const secret = req.body.secret;
+    const destination = req.body.destination;
+    const amount = req.body.amount;
 
 
     /* 트랜잭션 설정값 */
@@ -136,4 +136,4 @@ const transfer = function(req, res) {
 }
 
 
-module.exports = { index, transfer };
+module.exports = { getWallet, transfer };
